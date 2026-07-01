@@ -11,10 +11,31 @@ import { SalaryModule } from './modules/salary/salary.module';
 import { LearningModule } from './modules/learning/learning.module';
 import { TrackerModule } from './modules/tracker/tracker.module';
 import { AiModule } from './modules/ai/ai.module';
+import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
+
+imports: [
+  ConfigModule.forRoot({
+    isGlobal: true,
+  }),
+
+  DatabaseModule,
+  AuthModule,
+  UsersModule,
+  JobsModule,
+  CompaniesModule,
+  ResumesModule,
+  InterviewsModule,
+  SalaryModule,
+  LearningModule,
+  TrackerModule,
+  AiModule,
+]
 
 @Module({
-  imports: [AuthModule, UsersModule, JobsModule, CompaniesModule, ResumesModule, InterviewsModule, SalaryModule, LearningModule, TrackerModule, AiModule],
+  imports: [AuthModule, UsersModule, JobsModule, CompaniesModule, ResumesModule, InterviewsModule, SalaryModule, LearningModule, TrackerModule, AiModule, DatabaseModule, ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}
